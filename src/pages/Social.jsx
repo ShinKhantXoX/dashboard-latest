@@ -1,6 +1,7 @@
 import { Button, Menu } from "@mantine/core";
 import React from "react";
 import { AiOutlineHeart } from "react-icons/ai";
+import Footer from "../components/Footer"
 
 const Social = () => {
   return (
@@ -523,6 +524,7 @@ const Social = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

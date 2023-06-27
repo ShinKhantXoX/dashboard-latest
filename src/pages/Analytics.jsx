@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React  from "react";
 import { Button, rem, Menu, UnstyledButton, Pagination } from "@mantine/core";
 import { MdOutlineDateRange } from "react-icons/md";
 import { FaChevronDown } from "react-icons/fa";
@@ -9,11 +9,10 @@ import { AiOutlineClockCircle } from "react-icons/ai";
 import { BsPeople, BsThreeDots, BsFillSquareFill } from "react-icons/bs";
 import BarChart from "../components/AnalyticsPageComponents/BarChart";
 import RadioChart from "../components/AnalyticsPageComponents/RadarChart";
-import MapComponent from "../components/AnalyticsPageComponents/MapComponent";
 import DonutChart from "../components/AnalyticsPageComponents/DonutChart";
 import SortableTable from "../components/AnalyticsPageComponents/SortableTable";
 import WorldMap from "../components/AnalyticsPageComponents/WorldMap";
-
+import Footer from "../components/Footer"
 const Analytics = () => {
   const barChartData = {
     labels: [
@@ -829,6 +828,7 @@ const Analytics = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

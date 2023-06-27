@@ -33,10 +33,10 @@ const App = () => {
       >
         <SideBar />
 
-        <div className=" w-full ">
+        <div className=" w-full">
           <Navbar />
           <Path className={" min-h-screen"} />
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </div>
     </>

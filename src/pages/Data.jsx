@@ -1,32 +1,9 @@
 import React, { useEffect, useState } from "react";
-import {
-  LineChart,
-  Line,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip,
-  AreaChart,
-  Area,
-  ComposedChart,
-  Legend,
-  Bar,
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-} from "recharts";
-import { Button, Group, Table, Text, rem } from "@mantine/core";
-import { MdOutlineDateRange } from "react-icons/md";
-import { AiOutlineArrowDown } from "react-icons/ai";
-import { CiFilter } from "react-icons/ci";
-import { FiRefreshCcw } from "react-icons/fi";
-import { LuDollarSign } from "react-icons/lu";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
-import { FiShoppingBag } from "react-icons/fi";
 import { useSelector } from "react-redux";
-import { DatePicker } from "@mantine/dates";
 import { DataTable } from "mantine-datatable";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer"
 
 const PAGE_SIZES = [10, 15, 20];
 const tablElements = [
@@ -205,83 +182,86 @@ const Data = () => {
           </div>{" "}
         </div>
       ) : (
-        <div className=" h-screen min-h-screen px-10 pt-5 pb-32 bg-primaryLight w-full overflow-y-auto overflow-x-hidden">
-          <div className=" shadow rounded bg-white p-5 mb-10">
-            <div className=" pb-5 flex items-center justify-between">
-              <p className=" text-slate-700 text-sm font-bold">
-                Latest Projects
-              </p>
-              <span>
+        <>
+          <div className=" h-screen min-h-screen px-10 pt-5 pb-32 bg-primaryLight w-full overflow-y-auto overflow-x-hidden">
+            <div className=" shadow rounded bg-white p-5 mb-10">
+              <div className=" pb-5 flex items-center justify-between">
+                <p className=" text-slate-700 text-sm font-bold">
+                  Latest Projects
+                </p>
+                <span>
                 <BiDotsHorizontalRounded />
               </span>
+              </div>
+              <DataTable
+                  className=""
+                  borderRadius="sm"
+                  striped
+                  highlightOnHover
+                  // provide data
+                  records={records}
+                  // define columns
+                  columns={[
+                    {
+                      accessor: "file",
+                      title: "Photo",
+                      render: ({ file }, i) => {
+                        // const reader = new FileReader();
+
+                        // const handleImageLoad = (event) => {
+                        //   const result = reader.result;
+                        //   const img = document.getElementById(i);
+                        //   img.src = result;
+                        // };
+
+                        // reader.onload = handleImageLoad;
+                        // reader.readAsDataURL(file)
+                        return (
+                            <React.Fragment key={i} className="py-[50px]">
+                              <img
+                                  className={sideSelector ? 'lg:w-[40%] object-center md:w-[90%] w-[78%] rounded-full md:h-[3vh] lg:h-[5vh]'
+                                      : 'lg:w-[35%] object-center md:w-[80%] w-[75%] rounded-full md:h-[3vh] lg:h-[5vh]'
+                                  }
+                                  src={file}
+                                  id={i}
+                                  alt="Preview"
+                              />
+                            </React.Fragment>
+                        );
+                      },
+                    },
+
+                    { accessor: "Name", title: "Name" },
+                    {
+                      accessor: "Age",
+                      title: "Age",
+                      // this column has custom cell data rendering
+                    },
+                    { accessor: "Gender", title: "Gender" },
+
+                    { accessor: "Phone", title: "Phone" },
+                    { accessor: "Address", title: "Address" },
+                    { accessor: "date", title: "Release Date" },
+                  ]}
+                  totalRecords={cartItems?.length}
+                  paginationColor="cyan"
+                  paginationSize="sm"
+                  paginationWrapBreakpoint={""}
+                  recordsPerPage={pageSize}
+                  page={page}
+                  onPageChange={(p) => setPage(p)}
+                  recordsPerPageOptions={PAGE_SIZES}
+                  onRecordsPerPageChange={setPageSize}
+
+                  // execute this callback when a row is clicked
+                  // onRowClick={({ name, party, bornIn }) =>
+                  //   alert(`You clicked on ${name}, a ${party.toLowerCase()} president born in ${bornIn}.`)
+                  // }
+              />
             </div>
-            <DataTable
-              className=""
-              borderRadius="sm"
-              striped
-              highlightOnHover
-              // provide data
-              records={records}
-              // define columns
-              columns={[
-                {
-                  accessor: "file",
-                  title: "Photo",
-                  render: ({ file }, i) => {
-                    // const reader = new FileReader();
-
-                    // const handleImageLoad = (event) => {
-                    //   const result = reader.result;
-                    //   const img = document.getElementById(i);
-                    //   img.src = result;
-                    // };
-
-                    // reader.onload = handleImageLoad;
-                    // reader.readAsDataURL(file)
-                    return (
-                      <React.Fragment key={i} className="py-[50px]">  
-                        <img
-                          className={sideSelector ? 'lg:w-[40%] object-center md:w-[90%] w-[78%] rounded-full md:h-[3vh] lg:h-[5vh]'
-                          : 'lg:w-[35%] object-center md:w-[80%] w-[75%] rounded-full md:h-[3vh] lg:h-[5vh]'
-                        }
-                          src={file}
-                          id={i}
-                          alt="Preview"
-                        />
-                      </React.Fragment>
-                    );
-                  },
-                },
-
-                { accessor: "Name", title: "Name" },
-                {
-                  accessor: "Age",
-                  title: "Age",
-                  // this column has custom cell data rendering
-                },
-                { accessor: "Gender", title: "Gender" },
-
-                { accessor: "Phone", title: "Phone" },
-                { accessor: "Address", title: "Address" },
-                { accessor: "date", title: "Release Date" },
-              ]}
-              totalRecords={cartItems?.length}
-              paginationColor="cyan"
-              paginationSize="sm"
-              paginationWrapBreakpoint={""}
-              recordsPerPage={pageSize}
-              page={page}
-              onPageChange={(p) => setPage(p)}
-              recordsPerPageOptions={PAGE_SIZES}
-              onRecordsPerPageChange={setPageSize}
-
-              // execute this callback when a row is clicked
-              // onRowClick={({ name, party, bornIn }) =>
-              //   alert(`You clicked on ${name}, a ${party.toLowerCase()} president born in ${bornIn}.`)
-              // }
-            />
           </div>
-        </div>
+          <Footer/>
+        </>
       )}
     </>
   );

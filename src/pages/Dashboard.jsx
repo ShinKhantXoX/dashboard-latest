@@ -4,9 +4,7 @@ import {
   Line,
   CartesianGrid,
   XAxis,
-  YAxis,
   Tooltip,
-  AreaChart,
   Area,
   ComposedChart,
   Legend,
@@ -15,9 +13,8 @@ import {
   PieChart,
   Pie,
 } from "recharts";
-import { Button, Group, Menu, Table, Text, rem } from "@mantine/core";
+import { Button, Menu, Table, rem } from "@mantine/core";
 import { MdOutlineDateRange } from "react-icons/md";
-import { AiOutlineArrowDown } from "react-icons/ai";
 import { CiFilter } from "react-icons/ci";
 import { FiRefreshCcw } from "react-icons/fi";
 import { LuDollarSign } from "react-icons/lu";
@@ -27,6 +24,7 @@ import { useSelector } from "react-redux";
 import { DatePicker } from "@mantine/dates";
 import { DataTable } from "mantine-datatable";
 import { FaChevronDown } from "react-icons/fa";
+import Footer from "../components/Footer"
 
 const data = [
   {
@@ -1095,6 +1093,7 @@ const Dashboard = () => {
           />
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

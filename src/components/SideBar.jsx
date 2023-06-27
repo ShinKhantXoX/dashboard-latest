@@ -1,15 +1,11 @@
 import {
   Navbar,
   Group,
-  Code,
   ScrollArea,
   createStyles,
-  rem,
-  getStylesRef,
 } from "@mantine/core";
 import { IconCalendarStats, IconLock, IconNotes } from "@tabler/icons-react";
 import { AiOutlineClose } from "react-icons/ai";
-import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { NavLink } from "@mantine/core";
 import { useDispatch, useSelector } from "react-redux";
 import { toggle } from "../redux/sideSlice";
@@ -59,37 +55,14 @@ const mockdata = [
       { label: "SignUp", link: "/signup" },
     
     ],
-    subChild: [
-      { label: "Overview", link: "/" },
-      { label: "Forecasts", link: "/" },
-      { label: "Outlook", link: "/" },
-      { label: "Real time", link: "/" },
-    ],
   },
   {
     label: "Create Users",
     icon: <IconCalendarStats />,
     child: [{ label: "Form", link: "/form" }],
   },
-  //   { label: 'Analytics', icon: IconPresentationAnalytics },
-  //   { label: 'Contracts', icon: IconFileAnalytics },
-  //   { label: 'Settings', icon: IconAdjustments },
-  {
-    title: "Tools",
-    label: "Security",
-    icon: <IconLock />,
-    links: [
-      { label: "Enable 2FA", link: "/" },
-      { label: "Change password", link: "/" },
-      { label: "Recovery codes", link: "/" },
-    ],
-    child: [
-      { label: "Clients", link: "/clients" },
-      { label: "Forecasts", link: "/" },
-      { label: "Outlook", link: "/" },
-      { label: "Real time", link: "/" },
-    ],
-  },
+
+
 ];
 
 const useStyles = createStyles((theme) => ({

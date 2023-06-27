@@ -1,7 +1,7 @@
 import React from "react";
 import Leftprofiles from "./Leftprofiles";
 import Rightprofiles from "./Rightprofiles";
-import { AiOutlineCopyrightCircle } from "react-icons/ai";
+import Footer from "../components/Footer"
 const Profiles = () => {
   return (
     <div className="  overflow-x-hidden  ">
@@ -13,6 +13,7 @@ const Profiles = () => {
         <Leftprofiles />
         <Rightprofiles />
       </div>
+        <Footer/>
     </div>
   );
 };

@@ -190,7 +190,7 @@ export function Navbar() {
       height={59}
       className={`${
         token && path.pathname !== "/signin" && path.pathname !== "/signup"
-          ? `${"px-[10px] h-[69.09px] max-h-[69.09px] !mb-0 relative block"}`
+          ? `${"px-[10px] h-[69.09px] max-h-[69.09px] !mb-0 sticky block"}`
           : "hidden"
       }`}
       mb={120}
